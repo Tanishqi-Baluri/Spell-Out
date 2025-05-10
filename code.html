@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spell Out</title>
+    <link rel="stylesheet" href="styling/styling.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-side">
+            <h2>Type Text Below:</h2>
+            <textarea id="textInput" placeholder="Type here..."></textarea>
+        </div>
+        <div class="output-side">
+            <h2>Pronounced Words:</h2>
+            <p id="pronunciation"></p>
+        </div>
+    </div>
+    <div class="controls">
+        <button onclick="buttonFeedback('Recording started'); record()">Start Recording</button>
+        <button onclick="buttonFeedback('Recording stopped'); stopRecording()">Stop Recording</button>
+        <button onclick="buttonFeedback('Downloading audio'); downloadAudio()">Download Audio</button>
+    </div>
+    <div class="recording-status">
+        <div class="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <p id="timer-display">Recording: 0s</p>
+    </div>
+    <audio controls></audio>
+</body>
+<script>
+    window.onload = function() {
+        const synth = window.speechSynthesis;
+        const navigationMessage = "You are now on the main page. Type text in the box to hear it spoken. Use the buttons to record, stop, or download your voice recording.";
+        const utterThis = new SpeechSynthesisUtterance(navigationMessage);
+        utterThis.lang = 'en-US';
+        synth.speak(utterThis);
+         
+        if (localStorage.getItem("savedText")) {
+            document.getElementById("textInput").value = localStorage.getItem("savedText");
+        }
+    };
+
+    document.getElementById("textInput").addEventListener("input", function() {
+        localStorage.setItem("savedText", this.value);
+    });
+
+    function buttonFeedback(message) {
+        const synth = window.speechSynthesis;
+        const utterThis = new SpeechSynthesisUtterance(message);
+        synth.speak(utterThis);
+    }
+</script>
+<script src="scripts/page3.js"></script>
+<script src="scripts/voicerecorder.js"></script>
+</html>

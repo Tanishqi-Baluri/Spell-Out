@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPELL OUT</title>
+    <link rel="stylesheet" href="styling/style.css">
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>WELCOME TO SPELL OUT</h1>
+        <h2>Press any key to continue</h2>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        const synth = window.speechSynthesis;
+        const welcomeMessage = "Welcome to Spell Out. Press any key to continue.";
+        const utterThis = new SpeechSynthesisUtterance(welcomeMessage);
+        utterThis.lang = 'en-US';
+        synth.speak(utterThis);
+    };
+</script>
+<script src="scripts/dom.js"></script>
+</html>
