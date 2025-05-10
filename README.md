@@ -50,7 +50,7 @@ SpellOut is a front-end accessibility web project designed to help vision-impair
 Here is an example of how the project looks:
 
 ![Home-Page](assets/Home-page.png)
-![User-interface](assets/Main%20Page.png)
+![User-interface](assets/userInterface.png)
 
 ## 🧑‍💻 Cross-Browser Compatibility
 
